@@ -1,0 +1,23 @@
+{
+  "name": "@monsta-infinite/marketplace",
+  "license": "UNLICENSED",
+  "version": "0.1.0",
+  "scripts": {
+    "create-local": "graph create monsta/marketplace --node http://127.0.0.1:8020",
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy-local": "graph deploy monsta/marketplace --ipfs http://localhost:5001 --node http://127.0.0.1:8020"
+  },
+  "devDependencies": {
+    "@graphprotocol/graph-cli": "^0.22.1",
+    "@graphprotocol/graph-ts": "^0.22.1"
+  },
+  
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "babel-register": "^6.26.0",
+    "truffle": "^5.0.4",
+    "truffle-contract": "^4.0.5",
+    "truffle-hdwallet-provider": "^1.0.4"
+  }
+}

@@ -1,0 +1,85 @@
+
+type MonstaNFT @entity {
+  id: ID!
+  # owner : Bytes
+  createdAuctions:[AuctionCreate!]! @derivedFrom(field: "token")
+  cancelledAuctions: [AuctionCancel!]! @derivedFrom(field: "token")
+  successfulAuctions: [AuctionSucceed!]! @derivedFrom(field: "token")
+  transfers: [Transfer!]! @derivedFrom(field: "token")
+  rebirths: [MonstaRebirth!]! @derivedFrom(field: "token")
+  retires: [MonstaRetire!]! @derivedFrom(field: "token")
+  evolves: [MonstaEvolve!]! @derivedFrom(field: "token")
+  spawn: MonstaSpawn @derivedFrom(field: "token")
+}
+
+enum AuctionType {
+  UserAuction
+  SystemAuction  
+}
+
+type AuctionCreate @entity {
+  id: ID!
+  token: MonstaNFT!
+  startingPrice: BigInt!
+  endingPrice: BigInt!
+  duration: BigInt!
+  seller: Bytes!
+  timestamp: BigInt!
+  type: AuctionType!
+}
+
+type AuctionCancel @entity {
+  id: ID!
+  token: MonstaNFT!
+  timestamp: BigInt!
+  type: AuctionType!
+}
+
+type AuctionSucceed @entity{
+  id: ID!
+  token: MonstaNFT!
+  timestamp: BigInt!
+  totalPrice: BigInt!
+  winner: Bytes!
+  type: AuctionType!
+}
+
+type MonstaSpawn @entity{
+  id: ID!
+  token: MonstaNFT!
+  timestamp: BigInt!
+  owner: Bytes!
+  genes: BigInt!
+  matron: MonstaNFT
+  sire: MonstaNFT
+}
+
+type MonstaRebirth @entity{
+  id: ID!
+  token: MonstaNFT!
+  timestamp: BigInt!
+  genes: BigInt!
+}
+
+type MonstaRetire @entity {
+  id: ID!
+  token: MonstaNFT!
+  timestamp: BigInt!
+}
+
+type MonstaEvolve @entity{
+  id: ID!
+  token: MonstaNFT!
+  timestamp: BigInt!
+  oldGenes: BigInt
+  newGenes: BigInt
+}
+
+type Transfer @entity{
+  id: ID!
+  token: MonstaNFT!
+  timestamp: BigInt!
+  from: Bytes!
+  to: Bytes!
+}
+

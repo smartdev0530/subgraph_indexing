@@ -1,0 +1,23 @@
+User Auction contract:
+0x9F620Cc998a4ed7Bba8D31Eac5f6024a7ef6a0d5
+
+Admin Auction contract:
+0x309f9105323671F7392d99b1891d5396C1F401Ad
+
+event AuctionCreated(
+        uint256 indexed _tokenId,
+        uint256 _startingPrice,
+        uint256 _endingPrice,
+        uint256 _duration,
+        address _seller
+    );
+
+    event AuctionSuccessful(
+        uint256 indexed _tokenId,
+        uint256 _totalPrice,
+        address _winner
+    );
+
+    event AuctionCancelled(
+        uint256 indexed _tokenId
+    );
